@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Confirmation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <div
+      class="max-w-lg mx-auto mt-16 bg-white p-8 shadow-lg rounded-lg text-center"
+    >
+      <h1 class="text-2xl font-bold text-green-600 mb-4">
+        ✅ Booking Confirmed!
+      </h1>
+
+      <% if (booking) { %>
+      <div class="bg-gray-100 rounded-lg p-4 text-left mb-6">
+        <p><strong>Listing:</strong> <%= booking.listingTitle %></p>
+        <p><strong>Country:</strong> <%= booking.country %></p>
+        <p><strong>Price (per ticket):</strong> ₹<%= booking.price %></p>
+        <p><strong>Quantity:</strong> <%= booking.quantity %></p>
+        <p><strong>Total Price:</strong> ₹<%= booking.totalPrice %></p>
+        <p><strong>Date:</strong> <%= booking.date %></p>
+        <p>
+          <strong>Booked By:</strong>
+          <%= booking.user && booking.user.username ? booking.user.username :
+          "Guest User" %>
+        </p>
+      </div>
+      <% } else { %>
+      <p class="text-red-500">No booking data available.</p>
+      <% } %>
+
+      <a
+        href="/listing"
+        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+      >
+        Back to Listings
+      </a>
+    </div>
+  </body>
+</html>
